@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylus/index.styl">
+    <link rel="shortcut icon" href="images/plus.svg" type="image/png">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="body">
+    <div class="Registration--background">
+        <b class="title">Welcome</b>
+                <!-- <form action="lk.html" onclick="push(event)" > -->
+    <div class="btn">
+        <ul >
+           <button class="auth">
+            authorization
+           </button>
+         </ul>
+         <button class="reg">
+            registration
+         </button> 
+           <!-- <ul class="sign"> 
+                <li id="sign--up"><a class="btn">Sign up </a></li> 
+           </ul> -->
+            
+        
+    </div>
+    <div class="sign" id="box1">
+<form action="/auth" method="POST" onclick="push(event)" >
+        <div class="login">
+            <div id="border--login">
+                <span class="input--img">
+                <img src="images/man-user.svg" alt="" class="pick--login"> 
+                </span>
+                <input id="name" type="text" placeholder="nickname" class="login--input"  required>
+            </div> 
+        </div>
+
+        <div class="password ">
+            <div id="border--password">
+                <span class="input--img">
+                    <img src="images/lock.svg " class="pick--password" alt="">
+                </span>
+                <input id="surname" type="text" placeholder="password" class="password--input" required> 
+            </div> 
+            
+        </div>
+
+    </form>
+        
+            <div class="button">
+                <input type="submit" value="sign in"  > <a href="#" onclick="push(event)"></a>
+            </div>
+    </div>    
+
+    <div class="sign" id="box2">
+    <form action="/register" method="POST" onclick="push(event)" >
+
+            
+        <div class="login">
+            <div id="border--login">
+                <span class="input--img">
+                <img src="images/man-user.svg" alt="" class="pick--login"> 
+                </span>
+                <input id="name" type="text" placeholder="name" class="login--input"  required>
+            </div> 
+        </div>
+
+        
+
+        <div class="password" id="password">
+            <div id="border--password">
+                <span class="input--img">
+                    <img src="images/lock.svg " class="pick--password" alt="">
+                </span>
+                <input  type="text" placeholder="password" class="password--input" required> 
+            </div> 
+            
+        </div>
+
+        <div class="email" id="email">
+            <div id="border--email">
+                <span class="input--img">
+                <img src="images/email.svg" alt="" class="pick--email"> 
+                </span>
+                <input id="email" type="email" placeholder="email" class="email--input"  required>
+            </div>
+        </div>
+
+        </form>
+        <form action="lk.html">
+            <div class="button">
+                <input type="submit" value="Register"  > <a href="#" onclick="push(event)"></a>
+            </div>
+        </form>  
+
+    </div>
+    
+
+       
+<!-- </form> -->
+    </div>
+
+     
+
+
+<script>
+   
+
+   
+    var abtn = document.querySelector('.auth');
+    var btn = document.querySelector('.reg');
+    var auth = document.querySelector('#box1');
+    var reg = document.querySelector('#box2');
+
+    abtn.addEventListener("click", function(){
+        if(auth.style.display=='none'){
+            auth.style.display= 'block';
+            reg.style.display='none'
+        }
+        else{
+            auth.style.display='none';
+        }
+    });
+    btn.addEventListener("click",function(){
+        if(reg.style.display=='none'){
+            reg.style.display='block';
+            auth.style.display= 'none';
+        }
+        else{
+            reg.style.display='none';
+        }
+    });
+
+
+
+
+//     function openbox(id) {
+//   var all = document.querySelectorAll(".sign");
+//   for (var i = 0; i < all.length; i++) {
+//     if (all[i].id == id) {
+//       all[i].style.display = (all[i].style.display == 'none')? 'block' : 'none';
+//     } else {
+//       all[i].style.display = 'none';
+//     }
+//     console.log("lps");
+//   }
+// }
+
+
+</script>
+
+
+
+</body>
+</html>

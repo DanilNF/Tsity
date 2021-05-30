@@ -1,0 +1,163 @@
+.container_nav
+    position absolute
+    width 100%
+    top 0
+    left 0
+    right 0
+    z-index 1000
+    background-color rgb(78, 78, 78)
+
+.input__img
+    margin-left 2%
+    margin-top 2%
+    width 22px
+    height 19px
+
+.img__search
+    width 22px
+    height 19px
+    margin-top 20%
+    margin-left 20%
+
+.logo
+    display flex
+    margin-right 30px
+
+.logo__img
+    width 30px
+    height 30px
+
+.nav
+    padding-left 20%
+    display flex
+    justify-content center
+    font-size 14px
+    align-items center
+    text-transform uppercase
+
+.nav__link
+    margin-left 40px
+    padding-bottom 30px
+    text-align center
+    color black
+    margin 15px
+    margin-top 20px
+    margin-bottom 0px
+    text-decoration none
+    transition color .2s linear
+    font-weight 700
+    font-size 15px
+    display inline-block
+    position relative
+    &:hover
+        color #ffff
+        &:before
+            width 100%
+            left 0
+        &:after
+            width 100%
+    &:after
+        display block
+        position absolute
+        content ""
+        height 4px
+        width 0
+        background-color #ffff
+        left 0%
+        bottom 0
+
+.search
+    margin-right 10%
+    display flex
+    height 40px
+    padding 10px
+    &:hover
+        & > .searchText
+            width 180px
+            padding 0 6px
+
+.SearchBtn
+    width 40px
+    height 40px
+    background-color #fff
+    display flex
+    transition 0.4s
+
+.searchText
+    border none
+    background-color none
+    outline none
+    padding 0
+    color black
+    transition 0.4s
+    line-height 40px
+    width 0
+    height 40px
+
+.men__img
+    width 22px
+    height 19px
+
+.svg__link
+    &:hover
+        .svg__item
+            fill #ffff
+
+.cart__ph
+    margin-top 0.6%
+    margin-left 2%
+    width 22px
+    height 22px
+
+.question
+    margin-top 0.35%
+    width 22px
+    height 19px
+    margin-left 2%
+
+.container__tovar
+    width 86%
+    height 100%
+    // background-color #ffff
+    padding-left 7%
+    padding-right 7%
+
+.title__tovar
+    margin-top 6%
+    text-align left
+    font-size 30px
+    font-weight 700
+    color #333f
+
+.tov1__img
+    margin-top 3%
+
+.header__tov
+    font-weight 500
+    font-size 17px
+    margin-left 25px
+    color #333f
+    margin-bottom 0
+    font-weight 700
+
+.tov__1
+    text-decoration none
+
+.tovars__column1
+    display grid
+    grid-template-columns repeat(4,303px)
+    grid-gap 50px
+    grid-template-rows repeat(4,390px)
+
+.price
+    text-align center
+    margin 0
+    color black
+    text-decoration none
+    font-size 19px
+
+.tovars__column2
+    display grid
+    grid-template-columns repeat(4,303px)
+    grid-gap 50px
+    grid-template-rows repeat(3,390px)
