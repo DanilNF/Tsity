@@ -56,15 +56,15 @@ const fs = require("fs");
 	}
 );
 
-//Обработка HTML
-const html = () => {
+//Обработка hbs
+const hbs = () => {
 	return gulp
-		.src(SRC_DIR + "/*.html")
+		.src(SRC_DIR + "/*.hbs")
 		.pipe(gulp.dest(BUILD_DIR))
 		.pipe(sync.stream());
 };
 
-exports.html = html;
+exports.hbs = hbs;
 
 // Обработка стилей
 const styles = () => {
@@ -140,7 +140,7 @@ exports.copy = copy;
 // Правка путей
 const paths = () => {
 	return gulp
-		.src(BUILD_DIR + "/*.html")
+		.src(BUILD_DIR + "/*.hbs")
 		.pipe(replace(/"stylus\/([^\.]+)\.styl/, '"./assets/css/$1.css'))
 		.pipe(replace('href="../build', 'href=".'))
 		.pipe(
@@ -158,7 +158,7 @@ exports.paths = paths;
 
 // Watch
 const watch = () => {
-	gulp.watch(SRC_DIR + "/*.html", gulp.series(html, paths));
+	gulp.watch(SRC_DIR + "/*.hbs", gulp.series(hbs, paths));
 	gulp.watch(SRC_DIR + "/stylus/**/*.styl", gulp.series(styles));
 	gulp.watch(SRC_DIR + "/script/**/*.js", gulp.series(scripts));
 	gulp.watch([SRC_DIR + "/images/**/*"], gulp.series(copy));
@@ -169,13 +169,13 @@ exports.watch = watch;
 
 
 exports.default = gulp.series(
-	gulp.parallel(html, styles, scripts, copy),
+	gulp.parallel(hbs, styles, scripts, copy),
 	paths,
 	gulp.parallel(watch, server)
 );
 
 exports.pack = gulp.series(
-	gulp.parallel(html, styles, scripts, copy),
+	gulp.parallel(hbs, styles, scripts, copy),
 	paths
 );
 

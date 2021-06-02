@@ -29,25 +29,16 @@
         
     </div>
     <div class="sign" id="box1">
-<form action="/auth" method="POST" onclick="push(event)" >
-        <div class="login">
-            <div id="border--login">
-                <span class="input--img">
-                <img src="./assets/images/man-user.svg" alt="" class="pick--login"> 
-                </span>
-                <input id="name" type="text" placeholder="nickname" class="login--input"  required>
-            </div> 
-        </div>
+<form action="/" method="POST" onclick="push(event)" >
+    <div class="form-group">
+        <label for="name">Имя:</label>
+        <input class="form-control" name="name" />
+    </div>
 
-        <div class="password ">
-            <div id="border--password">
-                <span class="input--img">
-                    <img src="./assets/images/lock.svg " class="pick--password" alt="">
-                </span>
-                <input id="surname" type="text" placeholder="password" class="password--input" required> 
-            </div> 
-            
-        </div>
+    <div class="form-group">
+        <label for="password">Пароль:</label>
+        <input class="form-control" name="password" />
+    </div>
 
     </form>
         
@@ -56,46 +47,39 @@
             </div>
     </div>    
 
+
+
+
+
     <div class="sign" id="box2">
     <form action="/register" method="POST" onclick="push(event)" >
 
             
-        <div class="login">
-            <div id="border--login">
-                <span class="input--img">
-                <img src="./assets/images/man-user.svg" alt="" class="pick--login"> 
-                </span>
-                <input id="name" type="text" placeholder="name" class="login--input"  required>
-            </div> 
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input class="form-control" name="name" />
+        </div>
+    
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input class="form-control" name="password" />
         </div>
 
-        
-
-        <div class="password" id="password">
-            <div id="border--password">
-                <span class="input--img">
-                    <img src="./assets/images/lock.svg " class="pick--password" alt="">
-                </span>
-                <input  type="text" placeholder="password" class="password--input" required> 
-            </div> 
-            
+        <div class="form-group">
+            <label for="email">email:</label>
+            <input class="form-control" name="email" />
         </div>
-
-        <div class="email" id="email">
-            <div id="border--email">
-                <span class="input--img">
-                <img src="./assets/images/email.svg" alt="" class="pick--email"> 
-                </span>
-                <input id="email" type="email" placeholder="email" class="email--input"  required>
-            </div>
+        <div class="panel-body">
+            <button type="submit" class="btn btn-sm btn-primary">Регистрация</button>
+           
         </div>
 
         </form>
-        <form action="lk.html">
+        <!-- <form action="lk.html">
             <div class="button">
                 <input type="submit" value="Register"  > <a href="#" onclick="push(event)"></a>
             </div>
-        </form>  
+        </form>   -->
 
     </div>
     
@@ -150,6 +134,37 @@
 //   }
 // }
 
+
+async function CreateUser(userName, userPassword, userEmail){
+  
+  const response = await fetch("api/users", {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({
+          name: userName,
+          password: userPassword,
+          email: userEmail
+      })
+  });
+  if (response.ok === true) {
+      const user = await response.json();
+      reset();
+      document.querySelector("tbody").append(row(user));
+  }
+  
+};
+document.forms["userForm"].addEventListener("submit", e => {
+            e.preventDefault();
+            const form = document.forms["userForm"];
+            const id = form.elements["id"].value;
+            const name = form.elements["name"].value;
+            const password = form.elements["password"].value;
+            const email = form.elements["email"].value;
+            if (id == 0)
+                CreateUser(name, password, email);
+            else
+                EditUser(id, name, password, email);
+        });
 
 </script>
 

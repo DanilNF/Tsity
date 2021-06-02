@@ -112,7 +112,7 @@
             });
             if (response.ok === true) {
                 const user = await response.json();
-                document.querySelector("tr[data-rowid='" + user._id + "']").remove();
+                document.querySelector("tr[data-rowid=:"" + user._id + "']").remove();
             }
         }
   

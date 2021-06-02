@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/index.css"/>
+    <link rel="shortcut icon" href="./assets/images/plus.svg" type="image/png">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="body">
+<div class="Registration--background">
+        <b class="title">Welcome</b>
+            <div class="choice">
+                {{!-- <input class="title" type="button" value="Регистрация" id="reg">
+                <input class="title" type="button" value="Аутентификация" id="auth"> --}}
+                <button class="title" id="reg">Регистрация</button>
+                 <button class="title" id="auth">Аутентификация</button>
+            </div> 
+    <div id="box1">
+            <form action="/auth" method="post">
+			<div class="avt">
+				<label class="lbl" for="name">Имя</label>
+                <input class="form-control" id="vod" type="text" name="userName" placeholder="Name"/><br>
+                <hr>
+				<label class="lbl" for="password">Пароль</label>
+                <input class="form-control" id="vod" type="number" name="userPassword"  placeholder="Password"  /><br>
+                <hr>
+				<button class="btn btn-sm btn-primary" type="submit">Войти</button>
+            </div>    {{!-- <input type="submit" value="Войти" /> --}}
+            </form>
+    </div>
+
+    <div id="box2">
+                 <form class="form" action="/register" method="POST" onclick="push(event)" > 
+        <div class="form-group">
+            <label class="lbl" for="name">Имя</label>
+            <input id="inp" class="form-control" name="name" required>
+        </div>
+    <hr>
+        <div class="form-group">
+            <label class="lbl" for="password">Пароль</label>
+            <input id="inp" class="form-control" name="password" required>
+        </div>
+    <hr>
+        <div class="form-group">
+            <label class="lbl" for="email">email</label>
+            <input id="inp" class="form-control" name="email" required>
+        </div>
+    <hr>
+        <div class="form-group">
+            <label class="lbl" for="number">номер</label>
+            <input id="inp" class="form-control" name="number" required>
+        </div>
+        <div class="panel-body">
+            <button type="submit" class="btn btn-sm btn-primary">Зарегистрироваться</button>
+           
+        </div>
+
+        </form>
+</div> 
+   
+    </div>
+
+     
+
+
+<script>
+   
+    var cnp = document.querySelector('#auth');
+    var btn = document.querySelector('#reg');
+    var auth = document.querySelector('#box1');
+    var reg = document.querySelector('#box2');
+    var input1 = document.querySelector('.form-control');
+	var input2 = document.querySelector('#vod');
+
+
+    cnp.addEventListener("click", function(){
+        if(auth.style.display=='none'){
+            auth.style.display= 'flex';
+            reg.style.display='none';
+          //  input1.style.background='#ef6a76'
+        }
+        else{
+            auth.style.display='none';
+        }
+    });
+    btn.addEventListener("click",function(){
+        if(reg.style.display=='none'){
+            reg.style.display='flex';
+            auth.style.display= 'none';
+		 //	input2.style.background='#e4f6a5'
+        }
+        else{
+            reg.style.display='none';
+        }
+    });
+</script>
+
+</body>
+</html>

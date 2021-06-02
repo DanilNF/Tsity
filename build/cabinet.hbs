@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css"/>
+  <link rel="icon" href="./assets/images/favicon.png" type="image/x-icon">
+  <title>Личный кабинет</title>
+</head>
+
+<body class="cabinet__back">
+
+  <div class="arrow">
+    <a href="main.html">Главная</a>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    <p>Личный кабинет</p>
+  </div>
+
+  <div class="cabinet__caption">
+    <h2>Личный кабинет</h2>
+  </div>
+
+  <div class="cabinet__content">
+
+    <div class="cabinet__sidebar">
+      <button id="cabinet__profile" >Мой профиль</button>
+      <button id="cabinet__orders" >Данные оплаты</button>
+    </div>
+
+    <div class="cabinet__profile-info cabinet__profile-info--active">
+      <div class="cabinet__profile-blocks">
+        <h3>Личные данные</h3>
+        <div class="profile__wideblock">
+          <p>имя и фамилия</p>
+          <p>{{name}}</p>
+        </div>
+        <div class="profile__contacts">
+          <div class="profile__block">
+            <p>контактный телефон</p>
+            <p>{{password}}</p>
+          </div>
+          <div class="profile__block">
+            <p>электронная почта</p>
+            <input type="text">
+          </div>
+        </div>
+        <div class="profile__wideblock">
+          <p>Адрес проживания</p>
+          <input type="text">
+        </div>
+        <button class="cabinet__save" onclick="cabinet_save()">Сохранить изменения</button>
+      </div>
+    </div>
+
+    <div class="cabinet__orders-info cabinet__orders-info--active">
+      <div class="cabinet__orders-blocks">
+        <h3>Данные и способы оплаты</h3>
+        <div class="orders__getting">
+          <div class="orders__block">
+            <p>предпочтительный способ получения</p>
+            <select name="select" class="orders__select">
+              <option value="select1" class="select__style">Доставкой на почту</option>
+              <option value="select2">Курьером</option>
+            </select>
+          </div>
+          <div class="orders__block">
+            <p>предпочтительный способ оплаты</p>
+            <select name="select" class="orders__select">
+              <option value="select1" class="select__style">Картой</option>
+              <option value="select2">Наличными</option>
+            </select>
+          </div>
+        </div>
+        <div class="orders__wideblock">
+          <p>адрес доставки</p>
+          <input type="text">
+        </div>
+        <button class="cabinet__save" onclick="cabinet_save()">Сохранить изменения</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/jquery.min.js"></script>
+  <script src="./assets/js/fslightbox.js"></script>
+  <script src="./assets/js/cabinet.js"></script>
+  
+</body>
+
+</html>
