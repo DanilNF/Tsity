@@ -15,11 +15,22 @@
         <span class="logo">
             <img  src="./assets/images/icon.png" class="logo__img">
         </span>
-        <a class="nav__link "href="/main">Новинки</a>
-        <a class="nav__link" href="/men"> Мужчинам</a>
-        <a class="nav__link" href="/women">Женщинам</a>
-        <a class="nav__link" href="/kid">Детям</a>
-        <a class="nav__link" href="/">Пункты выдачи</a> 
+        <div class="about__nav">
+          <a class="nav__link" href="/main">Новинки</a>
+          <a class="nav__link" href="/men"> Мужчинам</a>
+          <a class="nav__link" href="/women">Женщинам</a>
+          <a class="nav__link" href="/kid">Детям</a>
+         </div>
+        <div class="about__mobile-menu">
+        <button class="about__mobile-btn"><i class="fas fa-bars"></i></button>
+        <div class="about__mobile-nav">
+              <a class="nav__link" href="/main">Новинки</a>
+              <a class="nav__link" href="/men"> Мужчинам</a>
+              <a class="nav__link" href="/women">Женщинам</a>
+              <a class="nav__link" href="/kid">Детям</a>
+        </div>
+      </div>
+
         <span class="men__img">
                 <svg  xmlns="reg" viewBox="0 0 350 350">
                     <a xlink:href="reg" class="svg__link">
@@ -179,5 +190,22 @@
           </div>
     
     <script src="./assets/js/index.js"></script>
+    <script >
+    var menu_btn=document.querySelector('.about__mobile-btn');
+    var menu_nav=document.querySelector('.about__mobile-nav');
+
+    menu_btn.addEventListener("click", function(e){
+	    e.preventDefault();
+    	if (menu_nav.style.display == 'none'){
+  		menu_nav.style.display = 'flex'
+	  }
+	  else{
+		  menu_nav.style.display = 'none'
+	  }
+  });
+
+    </script>
+
+    </script>
 </body>
 </html>

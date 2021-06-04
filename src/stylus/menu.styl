@@ -1,0 +1,82 @@
+.about__nav
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+    z-index 1
+        a
+            text-decoration none
+            color #fff
+            margin-right 50px
+                &:last-child
+                    margin-right 0
+                &:hover
+                    color #000
+.about__mobile-menu
+    display none
+    text-align center
+    z-index 1
+
+.about__mobile-btn
+    display none
+    color #fff
+    font-size 20px
+    z-index 1
+
+.about__mobile-nav
+    display none
+    flex-direction column
+    z-index 1
+    a
+        text-decoration none
+        font-size 16px
+        margin-bottom 5px
+        color #fff
+        &:hover
+            color #000
+
+@media(max-width:1200px)
+    .about__nav
+        display none
+    .about__mobile-menu
+        display block
+    .about__mobile-btn
+        display block
+
+@media(max-width:1400px)
+    .about__menu-vid
+        img 
+            width 500px
+            height 300px
+    .about__menu-content
+        padding-right 50px
+        h1
+            font-size 45px
+    .about__content
+        padding 100px 50px
+    .about__adv-block
+        padding 35px 0
+    .about__fb-text
+        margin-right 50px
+    .about__connect__block-text
+        margin-left 25px
+
+@media(max-width:1200px)
+    .about__menu
+        flex-direction column-reverse
+        align-items center
+        margin-top 50px
+    .about__menu-content
+        padding-right 0
+        text-align center
+    .about__menu-vid
+        margin-bottom 30px
+    .about__menu-buttons
+        margin-top 30px
+    .about__tip
+        width 270px
+    .about__fb
+        padding 70px 50px
+    .about__fb-text
+        margin-right 25px
+
