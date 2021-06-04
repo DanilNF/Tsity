@@ -57,17 +57,5 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 
-// function push(e) {
-// 	e.preventDefault();
-// 	//var val1 = document.getElementById("name").value;
-// 	var name=document.getElementById("name").nodeValue;
-// 	document.getElementById("name--lk").innerHTML=name; 
-// 	// var val2 = document.getElementById("surname").value;
-// 	// var val3 = document.getElementById("email").value;
-// 	//document.getElementById("name--lk").value = val1;
-// 	// document.getElementById("surname--lk").value = val2;
-// 	// document.getElementById("email--lk").value = val3;
-// 	return false;
-// };
 
 
