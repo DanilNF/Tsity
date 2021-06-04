@@ -3,9 +3,10 @@ const express       = require('express');
 const MongoClient   = require('mongodb').MongoClient;
 const bodyParser    = require('body-parser');
 const hbs = require("express-handlebars");
+const objectId = require("mongodb").ObjectID;
 const app = express();
 const jsonParser = express.json();
- 
+
 const mongoClient = new MongoClient("mongodb://localhost:27017/", { useUnifiedTopology: true });
 const urlencodedParser = bodyParser.urlencoded({extended: false});
  
@@ -34,28 +35,24 @@ mongoClient.connect(function(err, client){
     });
 });
 
-app.get("/auth", urlencodedParser, function (request, response) {
-    response.sendFile(__dirname+"/src/auth.html");
-});
+// app.get("/auth", urlencodedParser, function (request, response) {
+//     response.sendFile(__dirname+"/src/auth.html");
+// });
 
 app.post("/auth", urlencodedParser, function (request, response) {
     if(!request.body) return response.sendStatus(400);
-    // console.log("Поступила информация");
-    // console.log(request.body);
-    // response.send(`${request.body.userName} - ${request.body.userAge}`);
     const db = mongoClient.db("usersdb");
     const collection = db.collection("users");
     collection.findOne({name: request.body.userName, password: request.body.userPassword}, function(err, results){
-        // console.log("Ура!");
-        // console.log(request.body.userName); 
+
         console.log("Результаты: " + results); 
         if(results != null){
             response.render(__dirname+"/src/lk-hbs.hbs", {
                 name: request.body.userName,
                 password: request.body.userPassword,
 				email:	results.email,
-				number: results.number,
-				address: results.address
+				number: results.number
+				
             });
         }
         else{
@@ -68,10 +65,10 @@ app.post("/register", urlencodedParser, function (request, response) {
     const userPassword = request.body.password;
 	const userEmail = request.body.email;
 	const userNumber = request.body.number;
-	const userAddress = request.body.address;
+	
 	
 
-    const user = {name: userName, password: userPassword, email: userEmail , number:userNumber, address:userAddress };
+    const user = {name: userName, password: userPassword, email: userEmail , number:userNumber};
     const collection = request.app.locals.collection;
     collection.insertOne(user, function(err, result){
         if(err) return console.log(err);
@@ -79,8 +76,8 @@ app.post("/register", urlencodedParser, function (request, response) {
 		response.render(__dirname+"/src/lk-hbs.hbs",{
 			name: user.name,
 			email: user.email,
-			number: user.number,
-			address: user.address
+			number: user.number
+			
 		});
     });
 });
@@ -114,9 +111,6 @@ app.get("/index", function(request, response){
     });
  });
 
-
-
-
 app.use('/assets', express.static('build/assets'));
 
 app.get("/reg", function(request, response){
@@ -140,7 +134,6 @@ app.get("/api/users/:id", function(req, res){
     const id = new objectId(req.params.id);
     const collection = req.app.locals.collection;
     collection.findOne({_id: id}, function(err, user){
-               
         if(err) return console.log(err);
         res.send(user);
     });
@@ -164,11 +157,10 @@ app.post("/api/users", jsonParser, function (req, res) {
 });
     
 app.delete("/api/users/:id", function(req, res){
-        
     const id = new objectId(req.params.id);
     const collection = req.app.locals.collection;
     collection.findOneAndDelete({_id: id}, function(err, result){
-               
+
         if(err) return console.log(err);    
         let user = result.value;
         res.send(user);
@@ -181,9 +173,12 @@ app.put("/api/users", jsonParser, function(req, res){
     const id = new objectId(req.body.id);
     const userName = req.body.name;
     const userPassword = req.body.password;
+    const userEmail = req.body.email;
+    const userNumber = req.body.number;
+	
        
     const collection = req.app.locals.collection;
-    collection.findOneAndUpdate({_id: id}, { $set: {password: userPassword, name: userName}},
+    collection.findOneAndUpdate({_id: id}, { $set: {password: userPassword, name: userName, email: userEmail, number:userNumber}},
          {returnOriginal: false },function(err, result){
                
         if(err) return console.log(err);     
