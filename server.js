@@ -24,7 +24,7 @@ app.engine("hbs",hbs(
 app.use(express.static(__dirname + "/src"));
  
 mongoClient.connect(function(err, client){
-    if(err) return console.log(err);
+    if(err) return //console.log(err);
     dbClient = client;
     app.locals.collection = client.db("usersdb").collection("users");
 	app.locals.collection.find({}).toArray(function(err, users){
@@ -71,7 +71,7 @@ app.post("/register", urlencodedParser, function (request, response) {
     const user = {name: userName, password: userPassword, email: userEmail , number:userNumber};
     const collection = request.app.locals.collection;
     collection.insertOne(user, function(err, result){
-        if(err) return console.log(err);
+        if(err) return// console.log(err);
      //   response.send(user);
 		response.render(__dirname+"/src/lk-hbs.hbs",{
 			name: user.name,
@@ -124,7 +124,7 @@ app.get("/api/users", function(req, res){
     const collection = req.app.locals.collection;
     collection.find({}).toArray(function(err, users){
          
-        if(err) return console.log(err);
+        if(err) return //console.log(err);
         res.send(users)
     });
      
@@ -134,7 +134,7 @@ app.get("/api/users/:id", function(req, res){
     const id = new objectId(req.params.id);
     const collection = req.app.locals.collection;
     collection.findOne({_id: id}, function(err, user){
-        if(err) return console.log(err);
+        if(err) return// console.log(err);
         res.send(user);
     });
 });
@@ -151,7 +151,7 @@ app.post("/api/users", jsonParser, function (req, res) {
     const collection = req.app.locals.collection;
     collection.insertOne(user, function(err, result){
                
-        if(err) return console.log(err);
+        if(err) return// console.log(err);
         res.send(user);
     });
 });
@@ -161,7 +161,7 @@ app.delete("/api/users/:id", function(req, res){
     const collection = req.app.locals.collection;
     collection.findOneAndDelete({_id: id}, function(err, result){
 
-        if(err) return console.log(err);    
+        if(err) return //console.log(err);    
         let user = result.value;
         res.send(user);
     });
@@ -181,7 +181,7 @@ app.put("/api/users", jsonParser, function(req, res){
     collection.findOneAndUpdate({_id: id}, { $set: {password: userPassword, name: userName, email: userEmail, number:userNumber}},
          {returnOriginal: false },function(err, result){
                
-        if(err) return console.log(err);     
+        if(err) return// console.log(err);     
         const user = result.value;
         res.send(user);
     });
