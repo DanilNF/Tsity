@@ -5,40 +5,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/index.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <title>Document</title>
 </head>
-<body>
+<body class="body__lk">
     <div class="space">
-<div>
-        <p>Личный кабинет</p>
+<div class="title__lk">
+    <div class="link">
+    <a id="txt" href="main">
+         <b >Главная</b>    
+        </a>
     </div>
-    <div class="block">
+
+        <p>Личный кабинет</p>
+   
+    <div class="choice--lk">
+        <button class="title__my" id="date">Мои данные</button>
+        <button class="title__my" id="recv">Мои реквизиты</button>
+    </div>
+    <div class="block__date">
         <div>
             <h2>Имя</h2>
             <div class="persona">
                 <p>{{name}}</p>
               </div>
         </div>
+        <hr>
         <div>
             <h2>Почта</h2>
             <div class="persona">
                 <p>{{email}}</p>
               </div>
         </div>
+        <hr>
          <div>
             <h2>Номер телефона</h2>
             <div class="persona">
                 <p>{{number}}</p>
               </div>
         </div>
-         <div>
-            <h2>Город</h2>
-            <div class="persona">
-                <p>{{address}}</p>
-              </div>
+    </div>
+    <div class="block__recv">
+        <div class="pay">
+     <label id="label__h2" for=""><h2>Cпособ оплаты</h2></label><select  id="select">
+
+          <option value="1" disabled> выберите способ оплаты </option>
+           <option value=""></option> 
+          <option value="">Наличными/картой при получение</option>
+          <option value="">Картой онлайн</option>
+          <option value="">Система быстрых платижей-QrCode</option> 
+         
+
+      </select>
+        </div>
+        <hr>
+        <div class="address">
+                <label for=""><h2>Выберите город</h2></label> <select id="">
+                    <option value="1" disabled> Выберите город</option>
+                     <option value=""></option>
+                    <option value="">Москва</option>
+                    <option value="">Санкт-Петербург</option>
+                   
+
+                </select>
         </div>
     </div>
     </div>
     
+    </div>
+    <script>
+    var btn1 = document.querySelector('#date');
+    var btn2 = document.querySelector('#recv');
+    var dt = document.querySelector('.block__date');
+    var rc = document.querySelector('.block__recv');
+   
+   btn1.addEventListener("click",function(){
+       if(dt.style.display=='none'){
+           dt.style.display='flex';
+           rc.style.display='none'
+       }
+       else{
+           dt.style.display='none';
+       }
+   })
+   btn2.addEventListener("click",function(){
+       if(rc.style.display=='none'){
+           rc.style.display='flex';
+           dt.style.display='none'
+       }
+       else{
+           rc.style.display='none';
+       }
+   })
+    </script>
 </body>
 </html>

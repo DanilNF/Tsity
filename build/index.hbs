@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-    </style> 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Список пользователей</title>
@@ -22,35 +20,61 @@
         </div>
         <div class="form-group">
             <label for="email">email:</label>
-            <input class="form-control" name="email" />
+            <input class="form-control" name="email"/>
         </div>
+        <div class="form-group">
+            <label for="email">number:</label>
+            <input class="form-control" name="number"/>
+        </div>
+
+        
         <div class="panel-body">
             <button type="submit" class="btn btn-sm btn-primary">Сохранить</button>
             <a id="reset" class="btn btn-sm btn-primary">Сбросить</a>
         </div>
     </form>
+    <table class="table table-condensed table-striped table-bordered">
+        <thead><tr><th>Id</th><th>Имя</th><th>Пароль</th><th></th></tr></thead>
+        <tbody>
+        </tbody>
+    </table>
    
     <script>
     // Получение всех пользователей
-        
+        async function GetUsers() {
+            // отправляет запрос и получаем ответ
+            const response = await fetch("/api/users", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            // если запрос прошел нормально
+            if (response.ok === true) {
+                // получаем данные
+                const users = await response.json();
+                let rows = document.querySelector("tbody"); 
+                users.forEach(user => {
+                    // добавляем полученные элементы в таблицу
+                    rows.append(row(user));
+                });
+            }
+        }
         // Получение одного пользователя
-        // async function GetUser(id) {
-        //     const response = await fetch("/api/users/" + id, {
-        //         method: "GET",
-        //         headers: { "Accept": "application/json" }
-        //     });
-        //     if (response.ok === true) {
-        //         const user = await response.json();
-        //         const form = document.forms["userForm"];
-        //         form.elements["id"].value = user._id;
-        //         form.elements["name"].value = user.name;
-        //         form.elements["password"].value = user.password;
-        //         console.log(form.elements["email"])
-        //         form.elements["email"].value = user.email;
-        //     }
-        // }
+        async function GetUser(id) {
+            const response = await fetch("/api/users/" + id, {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                const form = document.forms["userForm"];
+                form.elements["id"].value = user._id;
+                form.elements["name"].value = user.name;
+                form.elements["email"].value = user.email;
+                form.elements["number"].value = user.number;
+            }
+        }
         // Добавление пользователя
-        async function CreateUser(userName, userPassword, userEmail){
+        async function CreateUser(userName, userPassword,userEmail,userNumber) {
   
             const response = await fetch("api/users", {
                 method: "POST",
@@ -58,7 +82,8 @@
                 body: JSON.stringify({
                     name: userName,
                     password: userPassword,
-                    email: userEmail
+                    email:userEmail,
+                    number: userNumber
                 })
             });
             if (response.ok === true) {
@@ -66,50 +91,96 @@
                 reset();
                 document.querySelector("tbody").append(row(user));
             }
-            
-         }
-        // // Изменение пользователя
-        // async function EditUser(userId, userName, userPassword) {
-        //     const response = await fetch("api/users", {
-        //         method: "PUT",
-        //         headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        //         body: JSON.stringify({
-        //             id: userId,
-        //             name: userName,
-        //             password: userPassword,
-        //             email: userEmail
-        //         })
-        //     });
-        //     if (response.ok === true) {
-        //         const user = await response.json();
-        //         reset();
-        //         document.querySelector("tr[data-rowid='" + user._id + "']").replaceWith(row(user));
-        //     }
-        // }
+        }
+        // Изменение пользователя
+        async function EditUser(userId, userName, userPassword) {
+            const response = await fetch("api/users", {
+                method: "PUT",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: userId,
+                    name: userName,
+                    password: userPassword,
+                    email:userEmail,
+                    number: userNumber
+                })
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                reset();
+                document.querySelector("tr[data-rowid='" + user._id + "']").replaceWith(row(user));
+            }
+        }
         // Удаление пользователя
-        // async function DeleteUser(id) {
-        //     const response = await fetch("/api/users/" + id, {
-        //         method: "DELETE",
-        //         headers: { "Accept": "application/json" }
-        //     });
-        //     if (response.ok === true) {
-        //         const user = await response.json();
-        //         document.querySelector("tr[data-rowid='" + user._id + "']").remove();
-        //     }
-        // }
+        async function DeleteUser(id) {
+            const response = await fetch("/api/users/" + id, {
+                method: "DELETE",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                document.querySelector("tr[data-rowid='" + user._id + "']").remove();
+            }
+        }
   
         // сброс формы
-        // function reset() {
-        //     const form = document.forms["userForm"];
-        //     form.reset();
-        //     form.elements["id"].value = 0;
-        // }
-        // сброс значений формы
-        // document.getElementById("reset").click(function (e) {
+        function reset() {
+            const form = document.forms["userForm"];
+            form.reset();
+            form.elements["id"].value = 0;
+        }
+        // создание строки для таблицы
+        function row(user) {
   
-        //     e.preventDefault();
-        //     reset();
-        // })
+            const tr = document.createElement("tr");
+            tr.setAttribute("data-rowid", user._id);
+  
+            const idTd = document.createElement("td");
+            idTd.append(user._id);
+            tr.append(idTd);
+  
+            const nameTd = document.createElement("td");
+            nameTd.append(user.name);
+            tr.append(nameTd);
+  
+            const passwordTd = document.createElement("td");
+            passwordTd.append(user.password);
+            tr.append(passwordTd);
+              
+            const linksTd = document.createElement("td");
+  
+            const editLink = document.createElement("a");
+            editLink.setAttribute("data-id", user._id);
+            editLink.setAttribute("style", "cursor:pointer;padding:15px;");
+            editLink.append("Изменить");
+            editLink.addEventListener("click", e => {
+  
+                e.preventDefault();
+                GetUser(user._id);
+            });
+            linksTd.append(editLink);
+  
+            const removeLink = document.createElement("a");
+            removeLink.setAttribute("data-id", user._id);
+            removeLink.setAttribute("style", "cursor:pointer;padding:15px;");
+            removeLink.append("Удалить");
+            removeLink.addEventListener("click", e => {
+  
+                e.preventDefault();
+                DeleteUser(user._id);
+            });
+  
+            linksTd.append(removeLink);
+            tr.appendChild(linksTd);
+  
+            return tr;
+        }
+        // сброс значений формы
+        document.getElementById("reset").click(function (e) {
+  
+            e.preventDefault();
+            reset();
+        })
   
         // отправка формы
         document.forms["userForm"].addEventListener("submit", e => {
@@ -119,10 +190,11 @@
             const name = form.elements["name"].value;
             const password = form.elements["password"].value;
             const email = form.elements["email"].value;
+            const number = form.elements["number"].value;
             if (id == 0)
-                CreateUser(name, password, email);
+                CreateUser(name, password, email, number);
             else
-                EditUser(id, name, password, email);
+                EditUser(id, name, password, email, number);
         });
   
         // загрузка пользователей
