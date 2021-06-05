@@ -85,46 +85,41 @@ app.get("/", function(request, response){
 	const collection = db.collection("tovars");
 	collection.find({}).toArray(function(err, tovars){
           response.render(__dirname+"/src/main.hbs", {
-            image1: tovars[0].photo,
-            text1: tovars[0].text,
-            price1: tovars[0].price,
-			image2: tovars[1].photo,
-             text2: tovars[1].text,
-            price2: tovars[1].price,
-			image3: tovars[2].photo,
-             text3: tovars[2].text,
-            price3: tovars[2].price,
-			image4: tovars[3].photo,
-             text4: tovars[3].text,
-            price4: tovars[3].price,
-			image5: tovars[4].photo,
-             text5: tovars[4].text,
-            price5: tovars[4].price,
-			image6: tovars[5].photo,
-             text6: tovars[5].text,
-            price6: tovars[5].price,
-			image7: tovars[6].photo,
-             text7: tovars[6].text,
-            price7: tovars[6].price,
-			image8: tovars[7].photo,
-             text8: tovars[7].text,
-            price8: tovars[7].price,
-			image9: tovars[8].photo,
-             text9: tovars[8].text,
-            price9: tovars[8].price,
-			image10: tovars[9].photo,
-             text10: tovars[9].text,
-            price10: tovars[9].price,
-			image11: tovars[10].photo,
-             text11: tovars[10].text,
-            price11: tovars[10].price,
-			image12: tovars[11].photo,
-             text12: tovars[11].text,
-            price12: tovars[11].price,
-
+                tovar:tovars
           })
     });	
  });
+
+ app.get("/women", function(request, response){
+    const db = mongoClient.db("tovarsDB");
+	const collection = db.collection("women");
+	collection.find({}).toArray(function(err, tovars){
+          response.render(__dirname+"/src/women.hbs", {
+                tovar:tovars
+          })
+    });	
+ }); 
+
+ app.get("/men", function(request, response){
+    const db = mongoClient.db("tovarsDB");
+	const collection = db.collection("men");
+	collection.find({}).toArray(function(err, tovars){
+          response.render(__dirname+"/src/men.hbs", {
+                tovar:tovars
+          })
+    });	
+ });
+
+ app.get("/kid", function(request, response){
+    const db = mongoClient.db("tovarsDB");
+	const collection = db.collection("kid");
+	collection.find({}).toArray(function(err, tovars){
+          response.render(__dirname+"/src/kid.hbs", {
+                tovar:tovars
+          })
+    });	
+ }); 
+
  app.get("/index-tovar", function(request, response){
     response.render(__dirname+"/src/index-tovar.hbs", {
     });
@@ -134,22 +129,12 @@ app.get("/kid", function(request, response){
     response.render(__dirname+"/src/kid.hbs", {
     });
  });
-app.get("/men", function(request, response){
-    response.render(__dirname+"/src/men.hbs", {
-    });
- });
-app.get("/women", function(request, response){
-    response.render(__dirname+"/src/women.hbs", {
-    });
- });
+
 app.get("/about", function(request, response){
     response.render(__dirname+"/src/about.hbs", {
     });
  });
-app.get("/main", function(request, response){
-    response.render(__dirname+"/src/main.hbs", {
-    });
- });
+ 
 app.get("/index", function(request, response){
     response.render(__dirname+"/src/index.hbs", {
     });

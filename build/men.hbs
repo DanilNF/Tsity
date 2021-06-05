@@ -15,7 +15,7 @@
             <img alt="tacer"  src="./assets/images/icon.webp" class="logo__img">
         </span>
          <div class="about__nav">
-          <a rel="noopener" class="nav__link" href="/main">Новинки</a>
+          <a rel="noopener" class="nav__link" href="/">Новинки</a>
           <a rel="noopener" class="nav__link" href="/men"> Мужчинам</a>
           <a rel="noopener" class="nav__link" href="/women">Женщинам</a>
           <a rel="noopener" class="nav__link" href="/kid">Детям</a>
@@ -49,7 +49,7 @@
           <div class="about__mobile-menu">
         
         <div class="about__mobile-nav">
-              <a rel="noopener" class="nav__link" href="/main">Новинки</a>
+              <a rel="noopener" class="nav__link" href="/">Новинки</a>
               <a rel="noopener" class="nav__link" href="/men"> Мужчинам</a>
               <a rel="noopener" class="nav__link" href="/women">Женщинам</a>
               <a rel="noopener" class="nav__link" href="/kid">Детям</a>
@@ -62,90 +62,15 @@
     <h2 class="title__tovar">Одежда</h2>
    <div class="block__tovar">
    <div class="tovars__column1">
-    <a rel="noopener" href="#" class="tov__1">
-   <img alt="tacer" src="./assets/images/main/main1.webp" class="tov1__img">       
-   <div class="header__tov">
-      <p>Чёрный мужской свитшот с  принтом</p>
-     </div>
-    <div class="price">1290 р</div>
-      </a> 
-   <a rel="noopener" href="#" class="tov__1">
-    <img alt="tacer" src="./assets/images/main/main2.webp" class="tov1__img">       
-      <div class="header__tov">
-         <p>Серая мужская футболка Max etreme</p>
-      </div>
-      <div class="price">590 р</div>
-          </a>
-       <a rel="noopener" href="#" class="tov__1">
-        <img alt="tacer" src="./assets/images/main/main3.webp" class="tov1__img">       
-        <div class="header__tov">
-        <p>белая мужская футболка  с принтом</p>
-         </div>
-        <div class="price">790 р</div>
-           </a>
-          <a rel="noopener" href="#" class="tov__1">
-          <img alt="tacer" src="./assets/images/main/main4.webp" class="tov1__img">       
-      <div class="header__tov">
-         <p>белая мужская футболка adidas</p>
-       </div>
-       <div class="price">1390 р</div>
-      </a>
-   <a rel="noopener" href="#" class="tov__1">
-    <img alt="tacer" src="./assets/images/main/main5.webp" class="tov1__img">      
-       <div class="header__tov">
-      <p>Синяя мужская футболка adidas</p>
-      </div>
-     <div class="price">1390 р</div>
-        </a>
-      <a rel="noopener" href="#" class="tov__1">
-        <img alt="tacer" src="./assets/images/main/main6.webp" class="tov1__img">       
-      <div class="header__tov">
-     <p>Чёрная мужская футболка с принтом</p>
-     </div>
-     <div class="price">590 р</div>
-       </a>
-         <a rel="noopener" href="#" class="tov__1">
-           <img alt="tacer" src="./assets/images/main/main7.webp" class="tov1__img">       
-       <div class="header__tov">
-         <p>Чёрная мужская футболка</p>
-     </div>
-   <div class="price">390 р</div>
-    </a>
-    <a rel="noopener" href="#" class="tov__1">
-   <img alt="tacer" src="./assets/images/main/main8.webp" class="tov1__img">       
-     <div class="header__tov">
-    <p>Чёрная мужская футболка<br> adidas</p>
-    </div>
-      <div class="price">1490 р</div>
-      </a>
-       <a rel="noopener" href="#" class="tov__1">
-    <img alt="tacer" src="./assets/images/men/men9.webp" class="tov1__img">       
-      <div class="header__tov">
-       <p>Синие мужские шорты GAP</p>
-      </div>
-    <div class="price">1590 р</div>
-      </a>
-      <a rel="noopener" href="#" class="tov__1">
-      <img alt="tacer" src="./assets/images/men/men10.webp" class="tov1__img">       
-        <div class="header__tov">
-     <p>Чёрное мужское худи с принтом</p>
-        </div>
-       <div class="price">2190 р</div>
-        </a>
-     <a rel="noopener" href="#" class="tov__1">
-       <img alt="tacer" src="./assets/images/men/men11.webp" class="tov1__img">       
-      <div class="header__tov">
-       <p>Чёрное мужское худи adidas</p>
-        </div>
-      <div class="price">2790 р</div>
-     </a>
-     <a rel="noopener" href="#" class="tov__1">
-       <img alt="tacer" src="./assets/images/men/men12.webp" class="tov1__img">       
-      <div class="header__tov">
-       <p>Тай-дай худи adidas</p>
-        </div>
-      <div class="price">3190 р</div>
-     </a>
+   {{#each tovar}}
+                  <a rel="noopener" href="/tovars/{{this.photo}}" class="tov__1">
+                    <img src="./assets/images/men/{{this.photo}}.webp" alt="Tovar" class="tov1__img">       
+                   <div class="header__tov">
+                     <p class="p">{{this.text}}</p>
+                   </div>
+                  <div class="price">{{this.price}}</div>
+                    </a>
+      {{/each}}
           </div>
    </div>
     </div>
@@ -163,10 +88,10 @@
                   <div class="footer-menu">
                     <span>Меню</span>
                     <ul>
-                      <li><a rel="noopener" href="index.html" class="footer-menu-link">ГЛАВНАЯ</a></li>
-                      <li><a rel="noopener" href="men.html" class="footer-menu-link">ДЛЯ МУЖЧИН</a></li>
-                      <li><a rel="noopener" href="women.html" class="footer-menu-link">ДЛЯ ЖЕНЩИН</a></li>
-                      <li><a rel="noopener" href="kid.html" class="footer-menu-link">ДЛЯ ДЕТЕЙ</a></li>
+                      <li><a rel="noopener" href="/"      class="footer-menu-link">ГЛАВНАЯ</a></li>
+                      <li><a rel="noopener" href="/men"   class="footer-menu-link">ДЛЯ МУЖЧИН</a></li>
+                      <li><a rel="noopener" href="/women" class="footer-menu-link">ДЛЯ ЖЕНЩИН</a></li>
+                      <li><a rel="noopener" href="/kid"   class="footer-menu-link">ДЛЯ ДЕТЕЙ</a></li>
                     </ul>
                   </div>
                  

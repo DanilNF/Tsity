@@ -16,7 +16,7 @@
             <img alt="tacer"  src="images/icon.webp" class="logo__img">
         </span>
    <div class="about__nav">
-          <a rel="noopener" class="nav__link" href="/main">Новинки</a>
+          <a rel="noopener" class="nav__link" href="/">Новинки</a>
           <a rel="noopener" class="nav__link" href="/men"> Мужчинам</a>
           <a rel="noopener" class="nav__link" href="/women">Женщинам</a>
           <a rel="noopener" class="nav__link" href="/kid">Детям</a>
@@ -51,7 +51,7 @@
          <div class="about__mobile-menu">
         
         <div class="about__mobile-nav">
-              <a rel="noopener" class="nav__link" href="/main">Новинки</a>
+              <a rel="noopener" class="nav__link" href="/">Новинки</a>
               <a rel="noopener" class="nav__link" href="/men"> Мужчинам</a>
               <a rel="noopener" class="nav__link" href="/women">Женщинам</a>
               <a rel="noopener" class="nav__link" href="/kid">Детям</a>
@@ -79,90 +79,15 @@
     <h2 class="title__tovar">Одежда</h2>
    <div class="block__tovar">
    <div class="tovars__column1">
-    <a rel="noopener" href="/tovars/{{image1}}" class="tov__1">
-   <img src="./assets/images/main/{{image1}}.webp" alt="Tovar" class="tov1__img">       
+     {{#each tovar}}
+    <a rel="noopener" href="/tovars/{{this.photo}}" class="tov__1">
+   <img src="./assets/images/main/{{this.photo}}.webp" alt="Tovar" class="tov1__img">       
    <div class="header__tov">
-      <p class="p">{{text1}}</p>
+      <p class="p">{{this.text}}</p>
      </div>
-    <div class="price">{{price1}}</div>
+    <div class="price">{{this.price}}</div>
       </a>
-   <a rel="noopener" href="/tovars/{{image2}}" class="tov__1">
-   <img src="./assets/images/main/{{image2}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text2}}</p>
-     </div>
-    <div class="price">{{price2}}</div>
-      </a>
-        <a rel="noopener" href="/tovars/{{image3}}" class="tov__1">
-   <img src="./assets/images/main/{{image3}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text3}}</p>
-     </div>
-    <div class="price">{{price3}}</div>
-      </a>
-          <a rel="noopener" href="/tovars/{{image4}}" class="tov__1">
-   <img src="./assets/images/main/{{image4}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text4}}</p>
-     </div>
-    <div class="price">{{price4}}</div>
-      </a>
-     <a rel="noopener" href="/tovars/{{image5}}" class="tov__1">
-   <img src="./assets/images/main/{{image5}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text5}}</p>
-     </div>
-    <div class="price">{{price5}}</div>
-      </a>
-     <a rel="noopener" href="/tovars/{{image6}}" class="tov__1">
-   <img src="./assets/images/main/{{image6}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text6}}</p>
-     </div>
-    <div class="price">{{price6}}</div>
-      </a>
-        <a rel="noopener" href="/tovars/{{image7}}" class="tov__1">
-   <img src="./assets/images/main/{{image7}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text7}}</p>
-     </div>
-    <div class="price">{{price7}}</div>
-      </a>
-    <a rel="noopener" href="/tovars/{{image8}}" class="tov__1">
-   <img src="./assets/images/main/{{image8}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text8}}</p>
-     </div>
-    <div class="price">{{price8}}</div>
-      </a>
-       <a rel="noopener" href="/tovars/{{image9}}" class="tov__1">
-   <img src="./assets/images/main/{{image9}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text9}}</p>
-     </div>
-    <div class="price">{{price9}}</div>
-      </a>
-       <a rel="noopener" href="/tovars/{{image10}}" class="tov__1">
-   <img src="./assets/images/main/{{image10}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text10}}</p>
-     </div>
-    <div class="price">{{price10}}</div>
-      </a>
-     <a rel="noopener" href="/tovars/{{image11}}" class="tov__1">
-   <img src="./assets/images/main/{{image11}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text11}}</p>
-     </div>
-    <div class="price">{{price11}}</div>
-      </a>
-        <a rel="noopener" href="/tovars/{{image12}}" class="tov__1">
-   <img src="./assets/images/main/{{image12}}.webp" alt="Tovar" class="tov1__img">       
-   <div class="header__tov">
-      <p class="p">{{text12}}</p>
-     </div>
-    <div class="price">{{price12}}</div>
-      </a>
+      {{/each}}
           </div>
    </div>
     </div>
@@ -180,10 +105,10 @@
                   <div class="footer-menu">
                     <span>Меню</span>
                     <ul>
-                      <li><a rel="noopener" href="index.html" class="footer-menu-link">ГЛАВНАЯ</a></li>
-                      <li><a rel="noopener" href="men.html" class="footer-menu-link">ДЛЯ МУЖЧИН</a></li>
-                      <li><a rel="noopener"  href="women.html" class="footer-menu-link">ДЛЯ ЖЕНЩИН</a></li>
-                      <li><a rel="noopener" href="kid.html" class="footer-menu-link">ДЛЯ ДЕТЕЙ</a></li>
+                      <li><a rel="noopener"  href="/"         class="footer-menu-link">ГЛАВНАЯ</a></li>
+                      <li><a rel="noopener"  href="/men"      class="footer-menu-link">ДЛЯ МУЖЧИН</a></li>
+                      <li><a rel="noopener"  href="/women"   class="footer-menu-link">ДЛЯ ЖЕНЩИН</a></li>
+                      <li><a rel="noopener"  href="/kid"     class="footer-menu-link">ДЛЯ ДЕТЕЙ</a></li>
                     </ul>
                   </div>
                    <div class="footer-contacts">
